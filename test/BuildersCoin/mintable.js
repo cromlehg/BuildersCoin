@@ -1,8 +1,6 @@
-import expectThrow from './helpers/expectThrow';
+import expectThrow from '../helpers/expectThrow';
 
-const BuildersCoin = artifacts.require('../contracts/Tokens/BuildersCoin.sol');
-
-contract('BuildersCoin', function (accounts) {
+export default function (BuildersCoin, accounts) {
   let token;
 
   beforeEach(async function () {
@@ -39,4 +37,4 @@ contract('BuildersCoin', function (accounts) {
     assert.equal(await token.mintingFinished(), true);
     await expectThrow(token.mint(accounts[0], 100));
   });
-});
+}
