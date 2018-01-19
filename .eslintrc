@@ -17,6 +17,7 @@
     "assert": false,
     "web3": false,
     "beforeEach": false,
+    "describe": false,
     "it": false
   },
 
