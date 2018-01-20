@@ -14,16 +14,16 @@ export default function (BuildersCoin, accounts) {
 
   it('should return the correct allowance amount after approval', async function () {
     await token.approve(accounts[1], 100);
-    let allowance = await token.allowance(accounts[0], accounts[1]);
+    const allowance = await token.allowance(accounts[0], accounts[1]);
     assert.equal(allowance, 100);
   });
 
   it('should return correct balances after transfer', async function () {
     await token.mint(accounts[0], 100);
     await token.transfer(accounts[1], 100);
-    let balance0 = await token.balanceOf(accounts[0]);
+    const balance0 = await token.balanceOf(accounts[0]);
     assert.equal(balance0, 0);
-    let balance1 = await token.balanceOf(accounts[1]);
+    const balance1 = await token.balanceOf(accounts[1]);
     assert.equal(balance1, 100);
   });
 
@@ -37,11 +37,11 @@ export default function (BuildersCoin, accounts) {
     await token.finishMinting();
     await token.approve(accounts[1], 100);
     await token.transferFrom(accounts[0], accounts[2], 100, {from: accounts[1]});
-    let balance0 = await token.balanceOf(accounts[0]);
+    const balance0 = await token.balanceOf(accounts[0]);
     assert.equal(balance0, 0);
-    let balance1 = await token.balanceOf(accounts[2]);
+    const balance1 = await token.balanceOf(accounts[2]);
     assert.equal(balance1, 100);
-    let balance2 = await token.balanceOf(accounts[1]);
+    const balance2 = await token.balanceOf(accounts[1]);
     assert.equal(balance2, 0);
   });
 
@@ -55,7 +55,7 @@ export default function (BuildersCoin, accounts) {
   it('should throw an error when trying to transferFrom more than _from has', async function () {
     await token.mint(accounts[0], 100);
     await token.finishMinting();
-    let balance0 = await token.balanceOf(accounts[0]);
+    const balance0 = await token.balanceOf(accounts[0]);
     await token.approve(accounts[1], balance0 + 1);
     await assertRevert(token.transferFrom(accounts[0], accounts[2], balance0 + 1, {from: accounts[1]}));
   });
@@ -70,10 +70,10 @@ export default function (BuildersCoin, accounts) {
 
     it('should increase by 50 then decrease by 10', async function () {
       await token.increaseApproval(accounts[1], 50);
-      let postIncrease = await token.allowance(accounts[0], accounts[1]);
+      const postIncrease = await token.allowance(accounts[0], accounts[1]);
       preApproved.plus(50).should.be.bignumber.equal(postIncrease);
       await token.decreaseApproval(accounts[1], 10);
-      let postDecrease = await token.allowance(accounts[0], accounts[1]);
+      const postDecrease = await token.allowance(accounts[0], accounts[1]);
       postIncrease.minus(10).should.be.bignumber.equal(postDecrease);
     });
   });
@@ -81,7 +81,7 @@ export default function (BuildersCoin, accounts) {
   it('should increase by 50 then set to 0 when decreasing by more than 50', async function () {
     await token.approve(accounts[1], 50);
     await token.decreaseApproval(accounts[1], 60);
-    let postDecrease = await token.allowance(accounts[0], accounts[1]);
+    const postDecrease = await token.allowance(accounts[0], accounts[1]);
     postDecrease.should.be.bignumber.equal(0);
   });
 

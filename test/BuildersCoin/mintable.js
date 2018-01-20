@@ -8,12 +8,12 @@ export default function (BuildersCoin, accounts) {
   });
 
   it('should start with a totalSupply of 0', async function () {
-    let totalSupply = await token.totalSupply();
+    const totalSupply = await token.totalSupply();
     assert.equal(totalSupply, 0);
   });
 
   it('should return mintingFinished false after construction', async function () {
-    let mintingFinished = await token.mintingFinished();
+    const mintingFinished = await token.mintingFinished();
     assert.equal(mintingFinished, false);
   });
 
@@ -25,10 +25,10 @@ export default function (BuildersCoin, accounts) {
     assert.equal(result.logs[1].event, 'Transfer');
     assert.equal(result.logs[1].args.from.valueOf(), 0x0);
 
-    let balance0 = await token.balanceOf(accounts[0]);
+    const balance0 = await token.balanceOf(accounts[0]);
     assert(balance0, 100);
 
-    let totalSupply = await token.totalSupply();
+    const totalSupply = await token.totalSupply();
     assert(totalSupply, 100);
   });
 
