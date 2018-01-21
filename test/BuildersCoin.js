@@ -1,3 +1,4 @@
+import additional from './BuildersCoin/additional';
 import basic from './BuildersCoin/basic';
 import mintable from './BuildersCoin/mintable';
 import ownable from './BuildersCoin/ownable';
@@ -17,5 +18,8 @@ contract('BuildersCoin', function (accounts) {
   });
   describe('Ownable Token', function () {
     ownable(BuildersCoin, accounts);
+  });
+  describe('Additional conditions', function () {
+    additional(BuildersCoin, accounts);
   });
 });
