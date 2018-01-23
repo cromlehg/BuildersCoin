@@ -18,6 +18,7 @@
       "error",
       "single"
     ],
-    "uppercase": 0
+    "uppercase": 0,
+    "function-order": 0
   }
 }
