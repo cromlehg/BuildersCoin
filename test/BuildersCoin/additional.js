@@ -27,10 +27,10 @@ export default function (BuildersCoin, accounts) {
     await expectThrow(token.finishMinting({from: accounts[2]}));
   });
 
-  it('should prevent transferring tokens by non-owners before minting is finished', async function () {
+  it('should prevent transferring tokens by non-owners before trnasfer is unlocked', async function () {
     await token.mint(accounts[1], 100);
     await assertRevert(token.transfer(accounts[2], 100, {from: accounts[1]}));
-    await token.finishMinting();
+    await token.unlockTransfer();
     await token.transfer(accounts[2], 100, {from: accounts[1]});
     const balance = await token.balanceOf(accounts[2]);
     assert.equal(balance, 100);
