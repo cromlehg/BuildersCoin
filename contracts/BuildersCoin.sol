@@ -26,7 +26,9 @@ contract BuildersCoin is MintableToken {
   }
 
   function unlockTransfer() onlyOwnerOrSaleAgent public {
-    transferLocked = false;
+    if (transferLocked) {
+      transferLocked = false;
+    }
   }
 
   function mint(address _to, uint256 _amount) onlyOwnerOrSaleAgent canMint public returns (bool) {
@@ -38,6 +40,7 @@ contract BuildersCoin is MintableToken {
   }
 
   function finishMinting() public onlyOwnerOrSaleAgent returns (bool) {
+    unlockTransfer();
     return super.finishMinting();
   }
 
