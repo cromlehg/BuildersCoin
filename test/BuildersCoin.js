@@ -4,7 +4,7 @@ import mintable from './BuildersCoin/mintable';
 import ownable from './BuildersCoin/ownable';
 import standard from './BuildersCoin/standard';
 
-const BuildersCoin = artifacts.require('../contracts/Tokens/BuildersCoin.sol');
+const BuildersCoin = artifacts.require('BuildersCoin.sol');
 
 contract('BuildersCoin', function (accounts) {
   describe('Basic Token', function () {
