@@ -33,7 +33,7 @@ contract BuildersCoin is MintableToken {
   }
 
   function finishMinting() public onlyOwnerOrSaleAgent returns (bool) {
-    super.finishMinting();
+    return super.finishMinting();
   }
 
   function transfer(address _to, uint256 _value) public notLocked returns (bool) {
