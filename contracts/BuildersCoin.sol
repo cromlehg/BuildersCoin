@@ -8,9 +8,10 @@ contract BuildersCoin is MintableToken {
   string public constant symbol = 'BLD';
   uint32 public constant decimals = 18;
   address public saleAgent;
+  bool public transferLocked = true;
 
   modifier notLocked() {
-    require(msg.sender == owner || msg.sender == saleAgent || mintingFinished);
+    require(msg.sender == owner || msg.sender == saleAgent || !transferLocked);
     _;
   }
 
@@ -22,6 +23,10 @@ contract BuildersCoin is MintableToken {
   function setSaleAgent(address newSaleAgnet) public {
     require(msg.sender == owner || msg.sender == saleAgent);
     saleAgent = newSaleAgnet;
+  }
+
+  function unlockTransfer() onlyOwnerOrSaleAgent public {
+    transferLocked = false;
   }
 
   function mint(address _to, uint256 _amount) onlyOwnerOrSaleAgent canMint public returns (bool) {
