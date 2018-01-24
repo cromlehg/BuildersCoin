@@ -26,7 +26,7 @@ contract Presale is Ownable {
   bool public devWithdrawn;
   address public directMintAgent;
   address public wallet;
-  address public devWallet = 0xea15adb66dc92a4bbccc8bf32fd25e2e86a2a770;
+  address public devWallet = 0xEA15Adb66DC92a4BbCcC8Bf32fd25E2e86a2A770;
   BuildersCoin public token;
   mapping(address => uint) balances;
 
