@@ -1,6 +1,7 @@
 pragma solidity ^0.4.18;
 
 import './math/SafeMath.sol';
+import './token/ERC20.sol';
 import './ownership/Ownable.sol';
 import './BuildersCoin.sol';
 
@@ -142,6 +143,11 @@ contract Presale is Ownable {
       devWithdrawn = true;
       devWallet.transfer(devLimit);
     }
+  }
+
+  function retrieveTokens(address _to, address _anotherToken) public onlyOwner {
+    ERC20 alienToken = ERC20(_anotherToken);
+    alienToken.transfer(_to, alienToken.balanceOf(this));
   }
 
   //---------------------------------------------------------------------------
