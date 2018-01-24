@@ -5,14 +5,14 @@ import refundable from './Presale/refundable';
 const BuildersCoin = artifacts.require('BuildersCoin.sol');
 const Presale = artifacts.require('Presale.sol');
 
-contract('Presale', function (accounts) {
-  describe('Common Crowdsale', function () {
-    common(BuildersCoin, Presale, accounts);
-  });
-  describe('Capped Crowdsale', function () {
-    capped(BuildersCoin, Presale, accounts);
-  });
-  describe('Refundable Crowdsale', function () {
-    refundable(BuildersCoin, Presale, accounts);
-  });
+contract('Presale - common test', function (accounts) {
+  common(BuildersCoin, Presale, accounts);
+});
+
+contract('Presale - capped crowdsale test', function (accounts) {
+  capped(BuildersCoin, Presale, accounts);
+});
+
+contract('Presale - refundable crowdsale test', function (accounts) {
+  refundable(BuildersCoin, Presale, accounts);
 });
