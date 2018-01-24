@@ -97,7 +97,7 @@ contract Presale is Ownable {
     require(_investedWei >= minInvestmentLimit && !hardcapReached && now >= start && now < end);
     uint tokens = _investedWei.mul(1 ether).div(price);
     mintAndTransfer(_to, tokens);
-    balances[_to].add(_investedWei);
+    balances[_to] = balances[_to].add(_investedWei);
     investedWei = investedWei.add(_investedWei);
     if (investedWei >= softcap && ! softcapReached) {
       SoftcapReached();
