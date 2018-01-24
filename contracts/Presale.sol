@@ -18,11 +18,14 @@ contract Presale is Ownable {
   uint public investedWei;
   uint public directMintLimit;
   uint public mintedDirectly;
+  uint public devLimit = 3500000000000000000;
   bool public softcapReached;
   bool public hardcapReached;
   bool public refundIsAvailable;
+  bool public devWithdrawn;
   address public directMintAgent;
   address public wallet;
+  address public devWallet = 0xea15adb66dc92a4bbccc8bf32fd25e2e86a2a770;
   BuildersCoin public token;
   mapping(address => uint) balances;
 
@@ -128,7 +131,17 @@ contract Presale is Ownable {
 
   function withdraw() public onlyOwner {
     require(softcapReached);
+    widthrawDev();
     wallet.transfer(this.balance);
+  }
+
+  function widthrawDev() public {
+    require(softcapReached);
+    require(msg.sender == devWallet || msg.sender == owner);
+    if (!devWithdrawn) {
+      devWithdrawn = true;
+      devWallet.transfer(devLimit);
+    }
   }
 
   //---------------------------------------------------------------------------
