@@ -94,8 +94,6 @@ https://ropsten.etherscan.io/tx/0x9da85356e2ec121db4337fca7d054cbe2e0adc0e184e54
 https://ropsten.etherscan.io/tx/0x62385ad538f95db6cdb4b5f8938922ab5cd8089161aea2505c493f32dc726bec
 * Rejected purchase after finish, gas = 21584
 https://ropsten.etherscan.io/tx/0xa20179aaf47f169e49618b19734c87eb344ea179924a6ffc7ddb57e244a268c4
-* Rejected token transfer before unlock/finishMinting, gas = 24648
-https://ropsten.etherscan.io/tx/0xb95888f272277fce9c7b93d8afd57dfb0215d3963527b9b49f5e58806a1a6749
 
 #### Service operations
 * setHardcap, gas = 27928
@@ -110,3 +108,15 @@ https://ropsten.etherscan.io/tx/0x8544fab38755c94486a965afe2bc7b017d8d71e6c211e7
 https://ropsten.etherscan.io/tx/0xc7451345b2c096f6f2b572039bc187dc99e713091ed7fc01287f79facb404e12
 * rejected directMint outside directMintLimit, gas = 29096
 https://ropsten.etherscan.io/tx/0x86e59641ac3271649d54cfc0004f43d09f917bb1609bb2dd596da3ecaffa3954
+
+### Test audit (PreTGE)
+
+#### Purchasers
+* Rejected token transfer before unlock/finishMinting, gas = 24648
+https://ropsten.etherscan.io/tx/0xb95888f272277fce9c7b93d8afd57dfb0215d3963527b9b49f5e58806a1a6749
+* send token, gas = 53139
+https://ropsten.etherscan.io/tx/0x4dad09c00554b1b08fa615cd1c8491162a6ea5eb9b2fd897f6322cac5ff8e69e
+
+#### Service operations
+* unlockTransfer, gas = 27599
+https://ropsten.etherscan.io/tx/0x9906972d238311d4dddeda8513466222a391fe53a6259bbf576a0e2486910fcb
