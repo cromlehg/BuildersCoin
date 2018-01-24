@@ -68,6 +68,7 @@ contract Presale is Ownable {
   }
 
   function setDuration(uint _duration) public onlyOwner {
+    duration = _duration;
     end = start.add(_duration.mul(1 days));
   }
 
@@ -93,12 +94,12 @@ contract Presale is Ownable {
   }
 
   function mint(address _to, uint _investedWei) internal {
-    require(_investedWei >= minInvestmentLimit && !hardcapReached);
+    require(_investedWei >= minInvestmentLimit && !hardcapReached && now >= start && now < end);
     uint tokens = _investedWei.mul(1 ether).div(price);
     mintAndTransfer(_to, tokens);
     balances[_to].add(_investedWei);
-    investedWei.add(_investedWei);
-    if (investedWei >= softcap) {
+    investedWei = investedWei.add(_investedWei);
+    if (investedWei >= softcap && ! softcapReached) {
       SoftcapReached();
       softcapReached = true;
     }
@@ -109,7 +110,7 @@ contract Presale is Ownable {
   }
 
   function directMint(address _to, uint _tokens) public onlyOwnerOrDirectMintAgent {
-    mintedDirectly.add(_tokens);
+    mintedDirectly = mintedDirectly.add(_tokens);
     require(mintedDirectly <= directMintLimit);
     mintAndTransfer(_to, _tokens);
   }
