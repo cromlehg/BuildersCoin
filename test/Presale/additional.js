@@ -54,6 +54,14 @@ export default function (Token, Presale, wallets) {
     balance.should.bignumber.equal(tokens(1));
   });
 
+  it('should change mintedDirectly value', async function () {
+    let mintedDirectly = await presale.mintedDirectly();
+    mintedDirectly.should.bignumber.equal(0);
+    await presale.directMint(wallets[4], ether(1), {from: wallets[1]}).should.be.fulfilled;
+    mintedDirectly = await presale.mintedDirectly();
+    mintedDirectly.should.bignumber.equal(ether(1));
+  });
+
   it('should directMint regardless of the sale time', async function () {
     let pre;
     let post;

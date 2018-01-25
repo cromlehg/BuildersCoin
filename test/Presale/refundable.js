@@ -65,6 +65,19 @@ export default function (Token, Presale, wallets) {
     post.minus(pre).should.be.bignumber.equal(investment);
   });
 
+  it('should correctly calculate refund', async function () {
+    const investment1 = ether(1);
+    const investment2 = ether(2);
+    await presale.sendTransaction({value: investment1, from: wallets[3]});
+    await presale.sendTransaction({value: investment2, from: wallets[3]});
+    await increaseTimeTo(this.afterEnd);
+    await presale.finish({from: wallets[1]});
+    const pre = web3.eth.getBalance(wallets[3]);
+    await presale.refund({from: wallets[3], gasPrice: 0}).should.be.fulfilled;
+    const post = web3.eth.getBalance(wallets[3]);
+    post.minus(pre).should.bignumber.equal(investment1.plus(investment2));
+  });
+
   it('should forward funds to wallet after end if goal was reached', async function () {
     const investment = this.softcap;
     await presale.sendTransaction({value: investment, from: wallets[3]});
