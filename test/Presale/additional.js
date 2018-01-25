@@ -85,4 +85,14 @@ export default function (Token, Presale, wallets) {
     await presale.directMint(wallets[4], this.directMintLimit, {from: wallets[1]}).should.be.rejectedWith(EVMRevert);
   });
 
+  it('should not change mintedDirectly or totalSupply when directMint is rejected ', async function () {
+    const pre = await token.totalSupply();
+    await presale.directMint(wallets[5], this.directMintLimit.add(tokens(0.01)), {from: wallets[1]}).should.be.rejectedWith(EVMRevert);
+    const post = await token.totalSupply();
+    pre.minus(post).should.bignumber.equal(0);
+    const balance = await token.balanceOf([wallets[5]]);
+    balance.should.bignumber.equal(0);
+    const mintedDirectly = await presale.mintedDirectly();
+    mintedDirectly.should.bignumber.equal(0);
+  });
 }
