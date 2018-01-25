@@ -26,6 +26,7 @@ export default function (Token, Presale, wallets) {
     this.softcap = ether(10);
     this.hardcap = ether(98);
     this.MinInvestmentLimit = ether(0.1);
+    this.developersLimit = ether(3.5);
 
     token = await Token.new();
     presale = await Presale.new();
@@ -71,6 +72,6 @@ export default function (Token, Presale, wallets) {
     const pre = web3.eth.getBalance(wallets[2]);
     await presale.finish({from: wallets[1]}).should.be.fulfilled;
     const post = web3.eth.getBalance(wallets[2]);
-    post.minus(pre).should.be.bignumber.equal(investment);
+    post.minus(pre).should.be.bignumber.equal(investment - this.developersLimit);
   });
 }
