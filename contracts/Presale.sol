@@ -13,7 +13,7 @@ contract Presale is Ownable {
   uint public start;
   uint public end;
   uint public duration;
-  uint public softcap;
+  uint public softcap = 3500000000000000000; // 3.5 ETH - should be changed
   uint public hardcap;
   uint public minInvestmentLimit;
   uint public investedWei;
@@ -74,14 +74,6 @@ contract Presale is Ownable {
   function setDuration(uint _duration) public onlyOwner {
     duration = _duration;
     end = start.add(_duration.mul(1 days));
-  }
-
-  function setSoftcap(uint _softcap) public onlyOwner {
-    softcap = _softcap;
-    if (investedWei >= softcap) {
-      SoftcapReached();
-      softcapReached = true;
-    }
   }
 
   function setHardcap(uint _hardcap) public onlyOwner {

@@ -16,7 +16,6 @@ contract Configurator is Ownable {
 
     presale.setPrice(1000000000000000000); // 1 BLD = 1 ETH
     presale.setMinInvestmentLimit(100000000000000000); // 0.1 ETH
-    presale.setSoftcap(1000000000000000000); // 1 ETH
     presale.setHardcap(10000000000000000000); // 10 ETH
     presale.setStart(1516791600); // Jan 24 2018 14:00:00 GMT+0300
     presale.setDuration(30); // 30 days

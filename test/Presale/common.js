@@ -23,7 +23,6 @@ export default function (Token, Presale, wallets) {
     this.end = this.start + duration.days(this.duration);
     this.afterEnd = this.end + duration.seconds(1);
     this.price = ether(1);
-    this.softcap = ether(10);
     this.hardcap = ether(98);
     this.MinInvestmentLimit = ether(0.1);
 
@@ -31,7 +30,6 @@ export default function (Token, Presale, wallets) {
     presale = await Presale.new();
     await presale.setPrice(this.price);
     await presale.setMinInvestmentLimit(this.MinInvestmentLimit);
-    await presale.setSoftcap(this.softcap);
     await presale.setHardcap(this.hardcap);
     await presale.setStart(this.start);
     await presale.setDuration(this.duration);
