@@ -1,3 +1,4 @@
+import additional from './Presale/additional';
 import capped from './Presale/capped';
 import common from './Presale/common';
 import refundable from './Presale/refundable';
@@ -15,4 +16,8 @@ contract('Presale - capped crowdsale test', function (accounts) {
 
 contract('Presale - refundable crowdsale test', function (accounts) {
   refundable(BuildersCoin, Presale, accounts);
+});
+
+contract('Presale - additional conditions test', function (accounts) {
+  additional(BuildersCoin, Presale, accounts);
 });
