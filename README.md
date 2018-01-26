@@ -1,5 +1,7 @@
 # Builder's Coin
 
+![Builder's Coin](logo.png "Builder's Coin")
+
 * _Standart_        : ERC20
 * _Name_            : Builder's Coin
 * _Ticket_          : BLD
@@ -13,6 +15,12 @@
 ## Smart-contracts description
 Mintable ERC20 token with PreTGE contract. 
 Crowdsale contract have special function to retrieve tokens transferred by mistake.
+
+### Social links
+* facebook - https://www.facebook.com/ICObuilderscoin
+* twitter - https://twitter.com/hashtag/BuildersCoin
+* instagram - https://www.instagram.com/builderscoin
+* telegram - https://t.me/BuildersCoin_ICO
 
 ### Contracts contains
 1. _BuildersCoin_ 
