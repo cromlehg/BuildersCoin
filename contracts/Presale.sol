@@ -13,13 +13,13 @@ contract Presale is Ownable {
   uint public start;
   uint public end;
   uint public duration;
-  uint public softcap = 3500000000000000000; // 3.5 ETH - should be changed
+  uint public softcap = 157000000000000000000; // 157 ETH
   uint public hardcap;
   uint public minInvestmentLimit;
   uint public investedWei;
   uint public directMintLimit;
   uint public mintedDirectly;
-  uint public devLimit = 3500000000000000000;
+  uint public devLimit = 3500000000000000000; // 3.5 ETH
   bool public softcapReached;
   bool public hardcapReached;
   bool public refundIsAvailable;

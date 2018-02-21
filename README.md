@@ -49,22 +49,21 @@ Investor should not use other wallets, coinmarkets or stocks. Can lose money.
 ## Main network configuration
 
 * _Extra tokens_               : 1 000 000 BLD 
-* _Extra tokens wallet_        : 
 
 #### Links
 * _Token_ - 
 * _PreTGE_ - 
 
 #### Pre Token Generation Event
-* _Price_                      : 
+* _Price_                      : 1 ETH = 1400 BLD
 * _Minimal insvestment limit_  : 0.1 ETH
-* _Softcap_                    : 
-* _Hardcap_                    :
-* _Start_                      : 
+* _Softcap_                    : 157 ETH
+* _Hardcap_                    : 357.142857 ETH
+* _Start_                      : Mar 20 2018 14:00:00 GMT+0300
 * _Period_                     : 30 days
-* _Contract manager_           : 
-* _Direct mint agent_          : 
-* _ETH Wallet_                 : 
+* _Contract manager_           : 0x9DFF939e27e992Ac8635291263c3aa41654f3228
+* _Direct mint agent_          : 0x9DFF939e27e992Ac8635291263c3aa41654f3228
+* _ETH Wallet_                 : 0x8617f1ba539d45dcefbb18c40141e861abf288b7
 
 ## Ropsten network configuration (test #1 - softcap reached)
 
