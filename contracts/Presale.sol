@@ -28,7 +28,7 @@ contract Presale is Ownable {
   address public wallet;
   address public devWallet = 0xEA15Adb66DC92a4BbCcC8Bf32fd25E2e86a2A770;
   BuildersCoin public token;
-  mapping(address => uint) balances;
+  mapping(address => uint) public balances;
 
   event SoftcapReached();
   event HardcapReached();
