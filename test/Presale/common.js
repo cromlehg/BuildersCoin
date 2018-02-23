@@ -1,4 +1,5 @@
 import ether from '../helpers/ether';
+import tokens from '../helpers/tokens';
 import { advanceBlock } from '../helpers/advanceToBlock';
 import { increaseTimeTo, duration } from '../helpers/increaseTime';
 import latestTime from '../helpers/latestTime';
@@ -22,7 +23,7 @@ export default function (Token, Presale, wallets) {
     this.duration = 30;
     this.end = this.start + duration.days(this.duration);
     this.afterEnd = this.end + duration.seconds(1);
-    this.price = ether(1);
+    this.price = 1400000000000000000000;
     this.hardcap = ether(98);
     this.MinInvestmentLimit = ether(0.1);
 
@@ -74,6 +75,6 @@ export default function (Token, Presale, wallets) {
   it('should assign tokens to sender', async function () {
     await presale.sendTransaction({value: ether(1), from: wallets[3]});
     const balance = await token.balanceOf(wallets[3]);
-    balance.should.be.bignumber.equal(ether(1));
+    balance.should.be.bignumber.equal(tokens(1400));
   });
 }
