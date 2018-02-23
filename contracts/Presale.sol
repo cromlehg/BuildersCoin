@@ -91,7 +91,7 @@ contract Presale is Ownable {
 
   function mint(address _to, uint _investedWei) internal {
     require(_investedWei >= minInvestmentLimit && !hardcapReached && now >= start && now < end);
-    uint tokens = _investedWei.mul(1 ether).div(price);
+    uint tokens = _investedWei.mul(price).div(1 ether);
     mintAndTransfer(_to, tokens);
     balances[_to] = balances[_to].add(_investedWei);
     investedWei = investedWei.add(_investedWei);
